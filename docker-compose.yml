@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - DATABASE_HOST=localhost
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=tasksdb
+    networks:
+      - shared-network
+    volumes:
+      - ./postgres-db:/var/lib/postgresql/data
+  
+  server:
+    container_name: server
+    restart: unless-stopped
+    image: server-prod
+    build:
+      context: server
+      target: production
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    networks:
+      - shared-network
+    depends_on:
+      - postgres
+
+  client:
+    container_name: client
+    restart: unless-stopped
+    image: client-prod
+    build:
+      context: client
+      target: production
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - shared-network
+    depends_on:
+      - server
+
+networks:
+  shared-network:
