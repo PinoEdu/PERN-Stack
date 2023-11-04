@@ -1,14 +1,13 @@
-FROM node:18.17.1 AS Production
+FROM node:18.17.1
 
-ENV NODE_ENV=Production
+WORKDIR /usr/src/app/client
 
-WORKDIR /usr/src/client
-
-COPY package.json .
-COPY package-lock.json .
+COPY package*.json ./
 
 RUN npm install
 
 COPY . .
+
+EXPOSE 3000
 
 CMD ["npm", "start"]
