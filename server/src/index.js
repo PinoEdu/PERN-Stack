@@ -2,6 +2,14 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
+// Inicializamos la tabla que usaremos
+const pool = require("./db");
+pool.on("connect", (client) => {
+    client
+        .query("CREATE TABLE task(id SERIAL PRIMARY KEY, title VARCHAR(255) UNIQUE, description VARCHAR(255))")
+        .catch(err => console.log(err))
+})
+
 const taskRoutes = require('./routes/task.routes');
 
 const app = express();
