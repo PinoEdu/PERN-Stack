@@ -1,6 +1,7 @@
 const { config } = require("dotenv");
 config()
 
+// Cargamos las variables de entorno para proteger las credenciales de nuestra base de datos
 module.exports = {
     db: {
         user: process.env.DB_USER,

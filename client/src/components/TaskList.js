@@ -4,17 +4,17 @@ import { useNavigate } from 'react-router-dom'
 
 export default function TaskList() {
   
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);   // Variable que permite guardar todas las tareas
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Funcion para poder dirigirme a otra ruta
 
-  const loadTasks = async () => {
+  const loadTasks = async () => {   // Funcion para cargar todas las tareas en la variable tasks
     const response = await fetch("http://localhost:4000/tasks");
     const data = await response.json();
     setTasks(data);
   };
  
-  const handleDelete = async(id) => {
+  const handleDelete = async(id) => {   // Funcion para borrar tareas del backend y frontend
     try {
       await fetch(`http://localhost:4000/tasks/${id}`, {
         method: "DELETE",
@@ -26,7 +26,7 @@ export default function TaskList() {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
-  useEffect(() => {
+  useEffect(() => {   // Funcion para actualizar en tiempo real cuando se borra una tarea
     loadTasks()
   }, [])
 
@@ -42,10 +42,10 @@ export default function TaskList() {
               <Typography>{task.description}</Typography>
             </div>
             <div>
-              <Button variant='contained' color='inherit' onClick={() => navigate(`/tasks/${task.id}/edit`)}>
+              <Button variant="contained" color="inherit" onClick={() => navigate(`/tasks/${task.id}/edit`)}>
                 Edit
               </Button>
-              <Button variant='contained' color='warning' onClick={() => handleDelete(task.id)} style={{marginLeft: ".5rem"}}>
+              <Button variant="contained" color="warning" onClick={() => handleDelete(task.id)} style={{marginLeft: ".5rem"}}>
                 Delete
               </Button>
             </div>

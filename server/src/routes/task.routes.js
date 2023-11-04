@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const pool = require("../db");
 const { getAllTasks, getTask, createTask, deleteTask, updateTask } = require("../controllers/task.controller")
 
 const router = Router();

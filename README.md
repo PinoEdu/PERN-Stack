@@ -1,1 +1,7 @@
-# pern-stack
+# Frotend
+
+# Backend
+
+# PostgreSQL
+
+# Docker
