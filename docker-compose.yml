@@ -3,6 +3,7 @@ version: "3.8"
 services:
   postgres:
     image: postgres
+    container_name: database
     env_file: ./.env
     environment:
       POSTGRES_PASSWORD: $DB_PASSWORD
@@ -11,11 +12,13 @@ services:
     ports:
       - $DB_PORT_LOCAL:$DB_PORT
   server:
+    container_name: backend
     env_file: ./.env
     build: ./server
     ports:
       - $SERVER_PORT:$SERVER_PORT
   client:
+    container_name: frontend
     env_file: ./.env
     build: ./client
     ports:
