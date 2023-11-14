@@ -59,8 +59,15 @@
 
 ![Primer paso](/imgs/SQLShell.png)
 
+## Front-end
 
+![frontend](/imgs/frontend.png)
 
+## Servicio (respuestas del back-end)
+
+- Utilizamos Postman.
+
+![backend](/imgs/Servicio.png)
 
 
 
