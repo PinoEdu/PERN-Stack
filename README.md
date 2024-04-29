@@ -19,7 +19,7 @@
 
 - Crear el archivo .env en la raíz de la carpeta.
 
-- Se debe estar ubicado en la raíz de la carpeta osea ../../pern-stack/
+- Se debe estar ubicado en la raíz de la carpeta, osea ../../pern-stack/
 
 - Ejecutar el siguiente comando para crear los contenedores con el docker-compose:
 
